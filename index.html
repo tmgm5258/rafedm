@@ -216,6 +216,10 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
 .email-card.expanded .email-toggle svg { transform:rotate(180deg); }
 .email-card .email-collapsible { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
 .email-card.expanded .email-collapsible { max-height:5000px; }
+
+/* Expand hint */
+.expand-hint { font-size:11px; color:var(--grey-400); margin-left:8px; font-weight:500; font-style:italic; transition:opacity 0.3s; }
+.email-card.expanded .expand-hint { opacity:0; pointer-events:none; }
 .email-header-left { display:flex; align-items:center; gap:12px; }
 .email-num { width:32px; height:32px; border-radius:8px; display:flex; align-items:center; justify-content:center; font-size:13px; font-weight:800; color:var(--white); }
 .email-num.inviter { background:var(--blue); }
@@ -345,7 +349,7 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
 </div>
 
 <!-- EMAIL 1: INVITER 1 INVITEE -->
-<div id="email-1" class="email-card expanded">
+<div id="email-1" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num inviter">1</div>
@@ -353,7 +357,7 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-inviter">Inviter</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -514,7 +518,7 @@ Kiểm tra bảng điều khiển Giới thiệu Bạn bè để xem ai đã tha
 </div>
 
 <!-- EMAIL 2: INVITER >2 (IB PITCH) -->
-<div id="email-2" class="email-card expanded">
+<div id="email-2" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num inviter">2</div>
@@ -522,7 +526,7 @@ Kiểm tra bảng điều khiển Giới thiệu Bạn bè để xem ai đã tha
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-inviter">Inviter</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -758,7 +762,7 @@ TMGM의 표준 추천 구조에 따라 추천 고객의 거래 활동을 기준�
 </div>
 
 <!-- EMAIL 3: INVITEE S1 -->
-<div id="email-3" class="email-card expanded">
+<div id="email-3" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee">3</div>
@@ -766,7 +770,7 @@ TMGM의 표준 추천 구조에 따라 추천 고객의 거래 활동을 기준�
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-invitee">Invitee</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -956,7 +960,7 @@ Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
 </div>
 
 <!-- EMAIL 4: INVITEE S1(a) -->
-<div id="email-4" class="email-card expanded">
+<div id="email-4" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee">4</div>
@@ -964,7 +968,7 @@ Giao dịch ít nhất 1 lot để mở khóa thưởng RAF.</div>
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-invitee">Invitee</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -1110,7 +1114,7 @@ TMGM은 이제 5개 플랫폼을 통해 추천 링크를 더욱 쉽게 공유할
 </div>
 
 <!-- EMAIL 5: S2 EDM 1 (+3 days) -->
-<div id="email-5" class="email-card expanded">
+<div id="email-5" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee">5</div>
@@ -1118,7 +1122,7 @@ TMGM은 이제 5개 플랫폼을 통해 추천 링크를 더욱 쉽게 공유할
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-invitee">Invitee</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -1308,7 +1312,7 @@ Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạ
 </div>
 
 <!-- EMAIL 6: S2 EDM 2 (+30 days) -->
-<div id="email-6" class="email-card expanded">
+<div id="email-6" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee">6</div>
@@ -1316,7 +1320,7 @@ Bạn có biết? Trong khi hoàn thành các nhiệm vụ giao dịch RAF, bạ
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-invitee">Invitee</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -1506,7 +1510,7 @@ RAF 미션을 수행하는 동안 거래할 때마다 포인트가 적립됩니�
 </div>
 
 <!-- EMAIL 7: S2 EDM 3 (+87 days) -->
-<div id="email-7" class="email-card expanded">
+<div id="email-7" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee">7</div>
@@ -1514,7 +1518,7 @@ RAF 미션을 수행하는 동안 거래할 때마다 포인트가 적립됩니�
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge badge-invitee">Invitee</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -1688,7 +1692,7 @@ Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn
 </div>
 
 <!-- EMAIL 8: S3 WINNER -->
-<div id="email-8" class="email-card expanded">
+<div id="email-8" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
     <div class="email-header-left">
       <div class="email-num invitee" style="background:var(--green);">8</div>
@@ -1696,7 +1700,7 @@ Bước 3: Giao dịch ít nhất 1 lot – và nhận thưởng RAF của bạn
     </div>
     <div style="display:flex;align-items:center;gap:12px;">
       <span class="type-badge" style="background:var(--green-light);color:var(--green);">🎉 Winner</span>
-      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+      <span class="expand-hint">Click to expand</span><div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
     </div>
   </div>
   <div class="email-collapsible">
@@ -1891,7 +1895,11 @@ TMGM과 함께라면:
 <script>
 function toggleCard(header) {
   const card = header.closest('.email-card');
-  card.classList.toggle('expanded');
+  const wasExpanded = card.classList.contains('expanded');
+  // Collapse all cards first
+  document.querySelectorAll('.email-card.expanded').forEach(c => c.classList.remove('expanded'));
+  // Toggle clicked card (if it was closed, open it)
+  if (!wasExpanded) card.classList.add('expanded');
 }
 
 function highlightSeq(e, node) {
