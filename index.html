@@ -349,6 +349,209 @@ body { font-family:var(--font); color:var(--dark); background:var(--bg); line-he
   </div>
 </div>
 
+<!-- TRIGGER FLOW VISUAL -->
+<style>
+.tf-card { background:var(--white); border-radius:var(--radius-lg); border:1px solid var(--grey-200); box-shadow:var(--shadow-sm); margin-bottom:32px; overflow:hidden; }
+.tf-header { padding:20px 28px; display:flex; align-items:center; justify-content:space-between; cursor:pointer; user-select:none; border-bottom:1px solid transparent; transition:border-color 0.2s; }
+.tf-card.expanded .tf-header { border-bottom-color:var(--grey-100); }
+.tf-body { max-height:0; overflow:hidden; transition:max-height 0.4s ease; }
+.tf-card.expanded .tf-body { max-height:5000px; }
+.tf-card.expanded .email-toggle { background:#CC1042; color:white; }
+.tf-card.expanded .email-toggle svg { transform:rotate(180deg); }
+.tf-card.expanded .expand-hint { opacity:0; pointer-events:none; }
+
+.tf-section { padding:0 28px 24px; }
+.tf-section:first-child { padding-top:24px; }
+.tf-label { display:flex; align-items:center; gap:10px; margin-bottom:16px; }
+.tf-dot { width:8px; height:8px; border-radius:50%; flex-shrink:0; }
+.tf-label-text { font-size:11px; font-weight:700; color:var(--grey-400); text-transform:uppercase; letter-spacing:1px; }
+.tf-line { flex:1; height:1px; background:var(--grey-200); }
+
+.tf-grid { display:grid; gap:12px; }
+.tf-grid-2 { grid-template-columns:1fr 1fr; }
+.tf-grid-3 { grid-template-columns:1fr 1fr 1fr; }
+
+.tf-item { border-radius:12px; padding:0; overflow:hidden; background:var(--white); border:1px solid var(--grey-200); transition:box-shadow 0.2s; }
+.tf-item:hover { box-shadow:0 2px 8px rgba(0,0,0,0.06); }
+.tf-item-top { padding:14px 18px; display:flex; align-items:center; gap:10px; }
+.tf-num { width:28px; height:28px; border-radius:50%; color:white; font-size:12px; font-weight:700; display:flex; align-items:center; justify-content:center; flex-shrink:0; }
+.tf-name { font-size:13px; font-weight:700; color:var(--dark); }
+.tf-props { padding:0 18px 14px; display:flex; flex-direction:column; gap:6px; }
+.tf-prop { display:flex; align-items:flex-start; gap:8px; font-size:11.5px; line-height:1.4; }
+.tf-prop-key { font-weight:700; white-space:nowrap; min-width:52px; }
+.tf-prop-val { color:var(--grey-600); }
+
+.tf-stage { margin-bottom:20px; }
+.tf-stage:last-child { margin-bottom:0; }
+.tf-stage-label { font-size:10px; font-weight:600; color:var(--grey-400); text-transform:uppercase; letter-spacing:0.8px; margin-bottom:10px; padding-left:4px; }
+.tf-stage-bar { width:3px; border-radius:2px; position:absolute; left:0; top:0; bottom:0; }
+
+.tf-countdown-badge { display:inline-flex; align-items:center; gap:4px; padding:3px 8px; border-radius:4px; font-size:10px; font-weight:700; margin-top:6px; }
+
+.tf-footer { margin:0 28px 24px; padding:16px 20px; border-radius:10px; background:linear-gradient(135deg,#f8f9fb,#f1f3f8); border:1px solid var(--grey-200); }
+.tf-footer-title { font-size:12px; font-weight:700; color:var(--dark); margin-bottom:10px; }
+.tf-footer-list { display:grid; grid-template-columns:1fr 1fr; gap:4px 24px; }
+.tf-footer-item { font-size:11px; color:var(--grey-500); line-height:1.6; padding-left:12px; position:relative; }
+.tf-footer-item::before { content:''; position:absolute; left:0; top:7px; width:4px; height:4px; border-radius:50%; background:var(--grey-400); }
+</style>
+
+<div id="trigger-flow" class="tf-card">
+  <div class="tf-header" onclick="document.getElementById('trigger-flow').classList.toggle('expanded')">
+    <div style="display:flex;align-items:center;gap:12px;">
+      <div style="width:36px;height:36px;border-radius:10px;background:linear-gradient(135deg,#0a1628,#1e3a5f);display:flex;align-items:center;justify-content:center;font-size:16px;">⚙️</div>
+      <div>
+        <h2 style="font-size:16px;font-weight:700;color:var(--dark);margin:0;">Trigger Flow & Properties</h2>
+        <div style="font-size:12px;color:var(--grey-500);margin-top:2px;">Platform setup reference — trigger conditions for all 8 emails</div>
+      </div>
+    </div>
+    <div style="display:flex;align-items:center;gap:12px;">
+      <span class="expand-hint">Click to expand</span>
+      <div class="email-toggle"><svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" style="transition:transform 0.3s"><polyline points="6 9 12 15 18 9"></polyline></svg></div>
+    </div>
+  </div>
+  <div class="tf-body">
+
+    <!-- INVITER FLOW -->
+    <div class="tf-section" style="padding-top:24px;">
+      <div class="tf-label">
+        <div class="tf-dot" style="background:var(--blue);"></div>
+        <span class="tf-label-text">Inviter Flow</span>
+        <div class="tf-line"></div>
+      </div>
+      <div class="tf-grid tf-grid-2">
+        <div class="tf-item" style="border-top:3px solid var(--blue);">
+          <div class="tf-item-top">
+            <div class="tf-num" style="background:var(--blue);">1</div>
+            <div class="tf-name">Inviter — 1 Invitee</div>
+          </div>
+          <div class="tf-props">
+            <div class="tf-prop"><span class="tf-prop-key" style="color:var(--blue);">Trigger</span><span class="tf-prop-val">Invitee count = 1</span></div>
+            <div class="tf-prop"><span class="tf-prop-key" style="color:var(--blue);">Target</span><span class="tf-prop-val">Newbie inviter — encourage more referrals</span></div>
+          </div>
+        </div>
+        <div class="tf-item" style="border-top:3px solid var(--blue);">
+          <div class="tf-item-top">
+            <div class="tf-num" style="background:var(--blue);">2</div>
+            <div class="tf-name">Inviter — >2 Invitees (IB Pitch)</div>
+          </div>
+          <div class="tf-props">
+            <div class="tf-prop"><span class="tf-prop-key" style="color:var(--blue);">Trigger</span><span class="tf-prop-val">Invitee count ≥ 2</span></div>
+            <div class="tf-prop"><span class="tf-prop-key" style="color:var(--blue);">Target</span><span class="tf-prop-val">Productive inviter → IB program conversion</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- INVITEE FLOW -->
+    <div class="tf-section">
+      <div class="tf-label">
+        <div class="tf-dot" style="background:#CC1042;"></div>
+        <span class="tf-label-text">Invitee Flow</span>
+        <div class="tf-line"></div>
+      </div>
+
+      <!-- Stage 1 -->
+      <div class="tf-stage">
+        <div class="tf-stage-label">Stage 1 — Sign Up</div>
+        <div class="tf-grid tf-grid-2">
+          <div class="tf-item" style="border-top:3px solid #CC1042;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#CC1042;">3</div>
+              <div class="tf-name">S1 — Sign Up Nudge</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Trigger</span><span class="tf-prop-val">Beginner task status = TA not opened</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Target</span><span class="tf-prop-val">Invitee hasn't opened Trading Account</span></div>
+            </div>
+          </div>
+          <div class="tf-item" style="border-top:3px solid #CC1042;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#CC1042;">4</div>
+              <div class="tf-name">S1(a) — Dual Role</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Trigger</span><span class="tf-prop-val">Beginner task status = TA not opened</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#CC1042;">Target</span><span class="tf-prop-val">Encourage invitee to also become inviter</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 2 -->
+      <div class="tf-stage">
+        <div class="tf-stage-label">Stage 2 — 90-Day Countdown</div>
+        <div class="tf-grid tf-grid-3">
+          <div class="tf-item" style="border-top:3px solid #e8833a;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#e8833a;">5</div>
+              <div class="tf-name">Countdown 1</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Timing</span><span class="tf-prop-val">Invitation + 3 days</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Trigger</span><span class="tf-prop-val">Deposit/trading not met + FTD = $0</span></div>
+              <div class="tf-countdown-badge" style="background:#fef3c7;color:#92400e;">87 days remaining</div>
+            </div>
+          </div>
+          <div class="tf-item" style="border-top:3px solid #e8833a;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#e8833a;">6</div>
+              <div class="tf-name">Countdown 2</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Timing</span><span class="tf-prop-val">Invitation + 30 days</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#e8833a;">Trigger</span><span class="tf-prop-val">Deposit/trading not met + FTD = $0</span></div>
+              <div class="tf-countdown-badge" style="background:#fef3c7;color:#92400e;">60 days remaining</div>
+            </div>
+          </div>
+          <div class="tf-item" style="border-top:3px solid #d32f2f;">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:#d32f2f;">7</div>
+              <div class="tf-name">Countdown 3</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#d32f2f;">Timing</span><span class="tf-prop-val">Invitation + 87 days</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:#d32f2f;">Trigger</span><span class="tf-prop-val">Deposit/trading not met + FTD = $0</span></div>
+              <div class="tf-countdown-badge" style="background:#fee2e2;color:#991b1b;">⚠ 3 days remaining — FINAL</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Stage 3 -->
+      <div class="tf-stage">
+        <div class="tf-stage-label">Stage 3 — Reward Claim</div>
+        <div class="tf-grid" style="max-width:49%;">
+          <div class="tf-item" style="border-top:3px solid var(--green);">
+            <div class="tf-item-top">
+              <div class="tf-num" style="background:var(--green);">8</div>
+              <div class="tf-name">S3 — Winner 🎉</div>
+            </div>
+            <div class="tf-props">
+              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Trigger</span><span class="tf-prop-val">All tasks completed (deposit ≥ $100 + trade ≥ 1 lot)</span></div>
+              <div class="tf-prop"><span class="tf-prop-key" style="color:var(--green);">Action</span><span class="tf-prop-val">Eligible to claim $50 reward</span></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- PROPERTIES SUMMARY -->
+    <div class="tf-footer">
+      <div class="tf-footer-title">📋 Key Properties for Platform Setup</div>
+      <div class="tf-footer-list">
+        <div class="tf-footer-item">Invitee count (Inviter flow trigger)</div>
+        <div class="tf-footer-item">First Time Deposit amount — $0 vs >$0</div>
+        <div class="tf-footer-item">Beginner task status — TA opened / not opened</div>
+        <div class="tf-footer-item">Invitation Time — days since invite (+3, +30, +87)</div>
+        <div class="tf-footer-item">Deposit/trading requirements — met / not met</div>
+        <div class="tf-footer-item">Task completion status — all done (for Winner)</div>
+      </div>
+    </div>
+
+  </div>
+</div>
+
 <!-- EMAIL 1: INVITER 1 INVITEE -->
 <div id="email-1" class="email-card">
   <div class="email-header" onclick="toggleCard(this)">
